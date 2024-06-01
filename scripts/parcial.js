@@ -6,7 +6,7 @@ const productos = [
         filtro: 'indumentaria',
         nombre: 'Buzo The Eras Tour',
         descripcion: 'Buzo de cuello redondo gris jaspeado con "Taylor Swift The Eras Tour" y fotos impresas en el frente.',
-        precio: 200,
+        precio: 89000,
         img: 'img/producto1.jpg',
         cantidad: 1,
     },
@@ -14,7 +14,7 @@ const productos = [
         filtro: 'libreria',
         nombre: 'Cuaderno A4 Evermore',
         descripcion: 'Cuaderno encuadernado en espiral con la foto del álbum Evermore y "ts" impreso en el frente, "Taylor Swift Evermore Album" impreso en el reverso y páginas rayadas. Contiene 100 páginas.',
-        precio: 10,
+        precio: 7500,
         img: 'img/producto2.jpg',
         cantidad: 1,
     },
@@ -22,7 +22,7 @@ const productos = [
         filtro: 'musica',
         nombre: 'Midnights CD',
         descripcion: 'Incluye 13 canciones con letras alternas y claras, 1 de 4 álbumes coleccionables con arte de portada y contraportada únicos 1 de 4 ilustraciones de disco únicas y coleccionables y un folleto de letras coleccionable con fotos nunca antes vistas.',
-        precio: 50,
+        precio: 22900,
         img: 'img/producto3.jpg',
         cantidad: 1,
     },
@@ -30,7 +30,7 @@ const productos = [
         filtro: 'indumentaria',
         nombre: 'Remera The Eras Tour',
         descripcion: 'Camiseta azul con fotos de la era del álbum de 1989 de Taylor Swift y "Taylor Swift The Eras Tour".',
-        precio: 100,
+        precio: 30000,
         img: 'img/producto4.jpg',
         cantidad: 1,
     },
@@ -38,7 +38,7 @@ const productos = [
         filtro: 'accesorios',
         nombre: 'Gorro Taylor Swift',
         descripcion: 'Gorro de punto rojo con vuelta y etiqueta "Taylor Swift" tejida. 100% acrílico.',
-        precio: 30,
+        precio: 25000,
         img: 'img/producto5.jpg',
         cantidad: 1,
     },
@@ -46,7 +46,7 @@ const productos = [
         filtro: 'musica',
         nombre: 'Lover Vinilo',
         descripcion: 'Incluye dos discos y posters de la era del álbum "Lover".',
-        precio: 50,
+        precio: 34499,
         img: 'img/producto6.jpg',
         cantidad: 1,
     },
@@ -54,7 +54,7 @@ const productos = [
         filtro: 'accesorios',
         nombre: 'Pulsera Taylor Swift',
         descripcion: 'Brazalete de oro con cierre de broche ajustable y dije "TS" grabado, con 12 gemas, cada una de las cuales representa un álbum de Taylor Swift.',
-        precio: 20,
+        precio: 1500,
         img: 'img/producto7.jpg',
         cantidad: 1,
     },
@@ -62,7 +62,7 @@ const productos = [
         filtro: 'libreria',
         nombre: 'Set Cuaderno + Lápices',
         descripcion: 'Libro de actividades con 13 páginas con fotos de Taylor Swift y "Taylor Swift The Eras Tour" y "Activity Book" impreso en el frente con un juego de 10 lápices de colores con "Taylor Swift The Eras Tour" impreso en el lateral.',
-        precio: 15,
+        precio: 99000,
         img: 'img/producto8.jpg',
         cantidad: 1,
     },
@@ -74,6 +74,8 @@ let carrito = [];
 // Cantidad total de productos en el carrito y precios
 let cantidadTotal = 0;
 let total = 0;
+
+
 
 // Elementos del DOM
 const contenidoShop = document.getElementById('contenidoShop');
@@ -109,6 +111,9 @@ function mostrarProductos() {
             const h4 = document.createElement('h4');
             h4.textContent = `$${producto.precio}`;
 
+            const botones = document.createElement('div');
+            botones.className = 'botones';
+
             const botonComprar = document.createElement('button');
             botonComprar.className = 'comprar';
             botonComprar.dataset.producto = producto.nombre;
@@ -119,8 +124,10 @@ function mostrarProductos() {
             botonVerMas.dataset.producto = producto.nombre;
             botonVerMas.textContent = 'Ver más';
 
+            botones.append(botonComprar, botonVerMas);
+
             // Agregamos elementos internos al contenedor principal
-            contenido.append(imagen, h3, h4, botonComprar, botonVerMas);
+            contenido.append(imagen, h3, h4, botones);
 
             // Agregar el contenedor principal al elemento contenidoShop
             contenidoShop.appendChild(contenido);
@@ -161,7 +168,7 @@ function abrirCarrito() {
     modalCarrito.innerHTML = '';
 
     // Agregamos el estilo para que se vea en pantalla
-    modalCarrito.style.display = 'block';
+    modalCarrito.style.display = 'flex';
 
     // Creamos contenedor general
     const carritoContainer = document.createElement('div');
@@ -227,6 +234,7 @@ function abrirCarrito() {
     carritoContainer.append(modalHeader, modalProductosContainer);
 
     const modalCantidad = document.createElement('div');
+    modalCantidad.className = 'cantidadTotal';
     const modalCantidadTotal = document.createElement('h3');
     modalCantidadTotal.innerText = `Cantidad total: ${cantidadTotal}`;
     const modalPrecioTotal = document.createElement('h3');
@@ -236,6 +244,16 @@ function abrirCarrito() {
     carritoContainer.appendChild(modalCantidad);
 
     modalCarrito.appendChild(carritoContainer);
+
+    const finalizar = document.createElement('div');
+    finalizar.className = 'finalizarCompra';
+    const botonComprar = document.createElement('button');
+    botonComprar.className = 'botonFinalizarCompra';
+    botonComprar.innerText = 'COMPRAR';
+
+    finalizar.appendChild(botonComprar);
+    carritoContainer.appendChild(finalizar);
+
 }
 
 // Función para quitar un producto del carrito

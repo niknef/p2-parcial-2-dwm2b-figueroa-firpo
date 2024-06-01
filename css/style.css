@@ -20,27 +20,16 @@ header {
 }
 
 #logo img {
-  max-width: 150px;
+  max-width: 100px;
   height: auto;
 }
 
 #estado {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-#estado button {
-  background-color: #e60023;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-#estado button:hover {
-  background-color: #d4001a;
-}
 
 #totalCarrito {
   font-size: 1.2em;
@@ -52,8 +41,8 @@ main {
 
 h2 {
   font-size: 2em;
-  margin-top: 0;
-  margin-bottom: 20px;
+  align-self: center;
+  text-align: center;
 }
 
 #busquedaFiltro {
@@ -74,12 +63,19 @@ h2 {
 
 .product {
   background-color: #fff;
+  border-radius: 5px;
   border: 1px solid #ddd;
   width: 350px;
   padding: 20px;
   text-align: center;
+  box-shadow: 3px 3px 15px 1px #d6d4d4;
  
 }
+
+.product:hover{
+  box-shadow: 3px 3px 15px 1px #5CAEBF;
+}
+
 
 .product img {
   max-width: 100%;
@@ -88,28 +84,41 @@ h2 {
 
 .product h3 {
   font-size: 1.2em;
-  margin: 10px 0;
+  margin: 0;
+  padding-top: 10px;
+ 
 }
 
 .product h4 {
   font-size: 1em;
-  color: #e60023;
+  font-weight: normal;
+  color: cadetblue;
   margin: 10px 0;
 }
 
-.product button {
-  background-color: #e60023;
+.product .botones{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+button {
+  background-color: cadetblue;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
-  width: 100%;
+  width: 50%;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
-.product button:hover {
-  background-color: #d4001a;
+
+.botones button:last-child {
+  background-color: white;
+  color: cadetblue;
+  border: #333 solid 1px; 
 }
 
 #modalCarrito {
@@ -127,6 +136,7 @@ h2 {
 
 .carritoContainer {
   background-color: #fff;
+  border-radius: 5px;
   padding: 20px;
   width: 80%;
   max-width: 500px;
@@ -134,16 +144,24 @@ h2 {
 }
 
 .carritoContainer header {
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
+
 }
 
 .carritoContainer .eliminar {
-  background: none;
+  width: 35px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
   border: none;
-  color: #e60023;
-  font-size: 1.5em;
+  color: white;
+  font-size: 2em;
   cursor: pointer;
 }
 
@@ -156,23 +174,55 @@ h2 {
 }
 
 .productoCarrito img {
-  max-width: 50px;
+  max-width: 100px;
   height: auto;
 }
 
 .productoCarrito .contenidoProducto {
   flex: 1;
   margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #ddd;
+}
+
+.productoCarrito .eliminar{
+  font-size: 1.2em;
+  color: #333;
+
+}
+
+.productoCarrito h5{
+  color: cadetblue;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.cantidadTotal h3{
+  margin: 0;
+}
+.cantidadTotal h3:first-child {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin: 1em 0;
+}
+
+.finalizarCompra{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 .notificacionCartel {
-  background-color: #e60023;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: cadetblue;
   color: #fff;
   padding: 10px;
-  position: fixed;
-  top: 10px;
-  right: 10px;
   z-index: 1000;
+  border-radius: 5px;
 }
 
 /* Estilos para el modal */
@@ -191,19 +241,29 @@ h2 {
 
 .modalContent {
   background-color: #fff;
+  border-radius: 5px;
   padding: 20px;
   width: 90%;
   max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
-  position: relative;
+  
+}
+
+.modalContent h4{
+  color: cadetblue;
+  font-weight: normal;
 }
 
 .cerrarModal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin: 0;
+  width: 35px;
   font-size: 1.5em;
   cursor: pointer;
 }
